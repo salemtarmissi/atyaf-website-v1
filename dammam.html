@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <link rel="icon" href="images/fovicon.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تفاصيل الفيلا السكنية الفاخرة | أطياف العقارية</title>
+  <meta name="description" content="استعرض تفاصيل الفيلا السكنية الفاخرة من أطياف العقارية، المخططات الهندسية، وضمانات البناء." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <style>
+    :root {
+      --green-dark: #1b2e18;
+      --green: #23351c;
+      --sand-light: #fbf6ee;
+      --sand: #f3e9d7;
+      --sand-accent: #ffeccb;
+      --gold: #b39159;
+      --gold-dark: #8b6a3b;
+      --white: #ffffff;
+      --text: #24311f;
+      --muted: #6b7566;
+      --max: 1400px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans Arabic", "Tajawal", system-ui, sans-serif;
+      color: var(--text);
+      background: #fff;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 60px));
+      margin: auto;
+    }
+
+    /* Full Viewport Section Base Style */
+    .screen-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 0;
+      position: relative;
+    }
+
+    /* Top Navigation Bar */
+    .nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 30;
+      background: transparent;
+      padding: 20px 0;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav img { height: 50px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      font-weight: 500;
+      font-size: 1.05rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--sand-accent); }
+
+    /* Hamburger Menu Button */
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--sand-accent);
+      padding: 0;
+    }
+
+    /* Mobile Drawer */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: var(--green-dark);
+      z-index: 100;
+      box-shadow: -5px 0 25px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      padding: 40px 30px;
+      transition: right 0.35s ease-in-out;
+    }
+
+    .mobile-menu.active {
+      right: 0;
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .mobile-menu-header img {
+      height: 40px;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    .mobile-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .mobile-links a {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 12px;
+    }
+
+    .mobile-links a:hover {
+      color: var(--sand-accent);
+    }
+
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      z-index: 90;
+      display: none;
+    }
+
+    .menu-overlay.active {
+      display: block;
+    }
+
+    /* Buttons */
+    .btn-gold {
+      background: var(--gold);
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all .25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, .4);
+      color: #fff;
+      padding: 12px 32px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all .25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-outline:hover {
+      background: #fff;
+      color: var(--green);
+    }
+
+    .pill-badge {
+      display: inline-block;
+      background: rgba(255, 236, 203, 0.85);
+      color: var(--gold-dark);
+      padding: 6px 20px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    /* --- SECTION 1: HERO (DESKTOP) --- */
+    .hero-section {
+      background: linear-gradient(rgba(20, 33, 16, 0.55), rgba(20, 33, 16, 0.55)), url('images/backdammam.png');
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      overflow: hidden;
+      position: relative;
+      padding-bottom: 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-content {
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 5vw, 4.5rem);
+      font-weight: 800;
+      color: var(--sand-accent);
+      line-height: 1.2;
+      margin: 0 0 25px 0;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    /* === HOUSE IMAGE POSITION === */
+    .hero-img-box {
+      position: absolute;
+      bottom: 0;
+      left: -200px;
+      width: 65%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-img-box img {
+      width: 100%;
+      max-width: 1300px;
+      height: auto;
+      object-fit: contain;
+      object-position: bottom left;
+      display: block;
+      margin-bottom: 0;
+    }
+
+    /* --- SECTION 2: FLOORPLANS & SPECS --- */
+    .floorplan-section {
+      background-color: var(--sand-light);
+    }
+
+    .specs-header-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .spec-item h3 {
+      font-size: clamp(2.8rem, 4vw, 3.8rem);
+      color: var(--gold);
+      font-weight: 800;
+      margin: 0;
+      line-height: 1;
+    }
+
+    .spec-item p {
+      font-size: 1.4rem;
+      color: var(--gold-dark);
+      font-weight: 700;
+      margin: 8px 0 0 0;
+    }
+
+    .plan-title-block {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .plan-title-block h2 {
+      font-size: clamp(2.2rem, 3.5vw, 3rem);
+      color: var(--gold);
+      margin: 0 0 8px 0;
+      font-weight: 800;
+    }
+
+    .plan-title-block p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .plan-card {
+      text-align: center;
+    }
+
+    .plan-card .img-wrapper {
+      margin-bottom: 18px;
+    }
+
+    .plan-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .plan-card h4 {
+      font-size: 1.8rem;
+      color: var(--green);
+      margin: 0;
+      font-weight: 700;
+    }
+
+    /* --- SECTION 4: BALANCED WARRANTIES GRID (Full Container Width) --- */
+    .warranties-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 25px;
+      width: 100%;
+    }
+
+    .warranty-card {
+      grid-column: span 4;
+      background: var(--green);
+      border: 1px solid rgba(179, 145, 89, 0.3);
+      border-radius: 20px;
+      padding: 40px 25px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .warranty-card:nth-child(4),
+    .warranty-card:nth-child(5) {
+      grid-column: span 6;
+    }
+
+    .warranty-card:hover {
+      transform: translateY(-6px);
+      background: var(--green-dark);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .warranty-icon-box {
+      width: 75px;
+      height: 75px;
+      background: rgba(179, 145, 89, 0.15);
+      border: 1px solid rgba(179, 145, 89, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      color: var(--gold);
+      transition: all 0.3s ease;
+    }
+
+    .warranty-card:hover .warranty-icon-box {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+
+    .warranty-icon-box .material-icons-round {
+      font-size: 36px;
+    }
+
+    .warranty-card h3 {
+      color: var(--sand-accent);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .warranty-card p {
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* --- SECTION 5: CALL TO ACTION & FOOTER --- */
+    .cta-section {
+      background: var(--green-dark);
+      color: #fff;
+      justify-content: space-between;
+    }
+
+    .cta-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 60px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      margin: auto 0;
+    }
+
+    .cta-info h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      color: #fff;
+      margin: 0 0 12px 0;
+      font-weight: 800;
+    }
+
+    .cta-info p {
+      color: rgba(255, 255, 255, 0.75);
+      margin: 0;
+      font-size: 1.15rem;
+      max-width: 600px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
+      flex-shrink: 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 0;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* --- EXACT MOBILE MATCH BASED ON ATTACHED IMAGE (<= 992px) --- */
+    @media (max-width: 992px) {
+      .container {
+        width: min(var(--max), calc(100% - 40px));
+      }
+
+      .screen-section {
+        min-height: 100vh;
+        padding: 40px 0;
+      }
+
+      .nav {
+        padding: 25px 0;
+      }
+
+      .nav-links { display: none; }
+      .hamburger { 
+        display: block; 
+        color: var(--sand-accent);
+      }
+
+      .hero-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding-top: 80px;
+        background: linear-gradient(rgba(20, 33, 16, 0.75), rgba(20, 33, 16, 0.75)), url('images/backdammam.png');
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-grid {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--sand-accent);
+        line-height: 1.35;
+        margin-bottom: 35px;
+        text-shadow: none;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 320px;
+        gap: 16px;
+      }
+
+      .hero-actions .btn-gold {
+        width: 100%;
+        padding: 16px 20px;
+        font-size: 1.15rem;
+        border-radius: 999px;
+        background: var(--gold);
+        color: #fff;
+      }
+
+      .hero-actions .btn-outline {
+        width: 100%;
+        padding: 16px 20px;
+        font-size: 1.15rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(0, 0, 0, 0.2);
+        color: #fff;
+      }
+
+      .hero-img-box { display: none; }
+
+      .warranties-grid {
+        display: flex;
+        flex-direction: column;
+      }
+      .warranty-card,
+      .warranty-card:nth-child(4),
+      .warranty-card:nth-child(5) {
+        grid-column: auto;
+        width: 100%;
+      }
+
+      .plans-grid { grid-template-columns: 1fr; }
+      .specs-header-grid { grid-template-columns: 1fr; gap: 30px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-card { flex-direction: column; text-align: center; }
+      .cta-info p { margin: 0 auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="index.html">
+        <img src="images/widelogo.png" alt="أطياف العقارية">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="#overview">المواصفات العامة</a>
+        <a href="#layout">مكونات الأدوار</a>
+        <a href="#construction">مراحل البناء</a>
+        <a href="#warranties">الضمانات</a>
+        <a href="#contact">تواصل معنا</a>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="قائمة التنقل">
+        <span class="material-icons-round" style="font-size: 42px;">menu</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <img src="images/widelogo.png" alt="أطياف العقارية">
+      <button class="close-btn" id="closeBtn">&times;</button>
+    </div>
+    <div class="mobile-links">
+      <a href="index.html" class="mobile-link">الرئيسية</a>
+      <a href="#overview" class="mobile-link">المواصفات العامة</a>
+      <a href="#layout" class="mobile-link">مكونات الأدوار</a>
+      <a href="#construction" class="mobile-link">مراحل البناء</a>
+      <a href="#warranties" class="mobile-link">الضمانات</a>
+      <a href="#contact" class="mobile-link">تواصل معنا</a>
+    </div>
+  </div>
+
+  <!-- SECTION 1: HERO -->
+  <section class="screen-section hero-section">
+    <div class="container" style="position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center;">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <h1 class="hero-title">مشروع الشعلة <br>— واحة الشرقيه</h1>
+          <div class="hero-actions">
+            <a class="btn-gold" href="https://wa.me/966506624129" target="_blank" rel="noopener noreferrer">احجز معاينة العقار</a>
+            <a class="btn-outline" href="#layout">استعرض المخطط الداخلي</a>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+    <div class="hero-img-box">
+      <img src="images/house.png" alt="مشروع الشعلة واحة الشرقية">
+    </div>
+  </section>
+
+  <!-- SECTION 2: FLOORPLANS & SPECS -->
+  <section class="screen-section floorplan-section" id="layout">
+    <div class="container">
+      
+      <!-- Top Metrics -->
+      <div class="specs-header-grid" id="overview">
+        <div class="spec-item">
+          <h3>356م²</h3>
+          <p>مساحة الأرض</p>
+        </div>
+        <div class="spec-item">
+          <h3>الدمام</h3>
+          <p>موقع المشروع</p>
+        </div>
+        <div class="spec-item">
+          <h3>512م²</h3>
+          <p>مسطح البناء</p>
+        </div>
+      </div>
+
+      <!-- Section Title -->
+      <div class="plan-title-block">
+        <h2>تفصيل وتوزيع الأدوار</h2>
+        <p>مساحات مصممة بعناية فائقة لتوفير أعلى مستويات الراحة والأنس في التصميم المعماري.</p>
+      </div>
+
+      <!-- Floorplans Grid -->
+      <div class="plans-grid">
+        <div class="plan-card">
+          <div class="img-wrapper">
+            <img src="images/1.png" alt="مخطط الدور الأرضي">
+          </div>
+          <h4>الدور الأرضي</h4>
+        </div>
+
+        <div class="plan-card">
+          <div class="img-wrapper">
+            <img src="images/floor2.png" alt="مخطط الدور الأول">
+          </div>
+          <h4>الدور الأول</h4>
+        </div>
+
+        <div class="plan-card">
+          <div class="img-wrapper">
+            <img src="images/floor3.png" alt="مخطط الدور الثاني">
+          </div>
+          <h4>الدور الثاني</h4>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: WARRANTIES & GUARANTEES CARDS -->
+  <section class="screen-section construction-section" id="warranties" style="background-color: var(--sand-light);">
+    <div class="container">
+      <div class="section-header">
+        <span class="pill-badge">الضمانات المعتمدة</span>
+        <h2>ضمانات شاملة لراحة بالك</h2>
+        <p>نحرص على تقديم أعلى معايير الجودة والاعتماد الموثق لكافة الأعمال الإنشائية والتشطيبات:</p>
+      </div>
+
+      <div class="warranties-grid">
+        <!-- Card 1: Paints -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">format_paint</span>
+          </div>
+          <h3>الدهانات</h3>
+          <p>ضمان لمدة ٥ سنوات</p>
+        </div>
+
+        <!-- Card 2: Windows & Glass -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">grid_view</span>
+          </div>
+          <h3>النوافذ والألمنيوم والزجاج</h3>
+          <p>ألمنيوم وزجاج سكريت — ضمان لمدة ٥ سنوات</p>
+        </div>
+
+        <!-- Card 3: Electrical -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">bolt</span>
+          </div>
+          <h3>الأعمال الكهربائية</h3>
+          <p>ضمان لمدة ٢٥ سنة</p>
+        </div>
+
+        <!-- Card 4: Plumbing -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">plumbing</span>
+          </div>
+          <h3>أعمال السباكة</h3>
+          <p>شركة تحويل — ضمان لمدة ٢٥ سنة</p>
+        </div>
+
+        <!-- Card 5: Insulation -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">shield</span>
+          </div>
+          <h3>العوازل المائية</h3>
+          <p>ضمان لمدة ١٠ سنوات مصدق من الغرفة التجارية للأَسح ودورات المياه</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: CONTACT & CTA -->
+  <section class="screen-section cta-section" id="contact">
+    <div class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+      <div class="cta-card">
+        <div class="cta-info">
+          <h2>ابدأ خطوتك بثقة مع أطياف</h2>
+          <p>للاستفسار عن تفاصيل هذه الفيلا، طلب كراسة الضمانات، أو حجز موعد للمعاينة الحية، تواصل معنا مباشرة وسيتولى فريقنا خدمتك بكل احترافية.</p>
+        </div>
+        <div class="cta-buttons">
+          <a class="btn-gold" href="https://wa.me/966506624129" target="_blank" rel="noopener noreferrer">تواصل عبر واتساب</a>
+          <a class="btn-outline" href="index.html">العودة للرئيسية</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        © ٢٠٢٦ جميع الحقوق محفوظة • أطياف للتطوير والاستثمار العقاري
+      </div>
+    </footer>
+  </section>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function toggleMenu() {
+      mobileMenu.classList.toggle('active');
+      menuOverlay.classList.toggle('active');
+    }
+
+    hamburgerBtn.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', toggleMenu);
+    });
+  </script>
+
+</body>
+
+</html>
