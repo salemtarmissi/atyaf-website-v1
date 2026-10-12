@@ -356,7 +356,7 @@
       font-weight: 700;
     }
 
-    /* --- SECTION 3: CONSTRUCTION SLIDER GALLERY --- */
+    /* --- SECTION 3: CONSTRUCTION IMAGES SLIDER --- */
     .construction-gallery-section {
       background-color: var(--white);
     }
@@ -462,7 +462,83 @@
       transform: scale(1.3);
     }
 
-    /* --- SECTION 4: CALL TO ACTION & FOOTER --- */
+    /* --- SECTION 4: BALANCED WARRANTIES GRID (Full Container Width) --- */
+    .warranties-section {
+      background-color: var(--sand-light);
+    }
+
+    .warranties-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 25px;
+      width: 100%;
+    }
+
+    .warranty-card {
+      grid-column: span 4;
+      background: var(--green);
+      border: 1px solid rgba(179, 145, 89, 0.3);
+      border-radius: 20px;
+      padding: 40px 25px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .warranty-card:nth-child(4),
+    .warranty-card:nth-child(5) {
+      grid-column: span 6;
+    }
+
+    .warranty-card:hover {
+      transform: translateY(-6px);
+      background: var(--green-dark);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .warranty-icon-box {
+      width: 75px;
+      height: 75px;
+      background: rgba(179, 145, 89, 0.15);
+      border: 1px solid rgba(179, 145, 89, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      color: var(--gold);
+      transition: all 0.3s ease;
+    }
+
+    .warranty-card:hover .warranty-icon-box {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+    }
+
+    .warranty-icon-box .material-icons-round {
+      font-size: 36px;
+    }
+
+    .warranty-card h3 {
+      color: var(--sand-accent);
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .warranty-card p {
+      color: var(--gold);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* --- SECTION 5: CALL TO ACTION & FOOTER --- */
     .cta-section {
       background: var(--green-dark);
       color: #fff;
@@ -588,6 +664,17 @@
 
       .hero-img-box { display: none; }
 
+      .warranties-grid {
+        display: flex;
+        flex-direction: column;
+      }
+      .warranty-card,
+      .warranty-card:nth-child(4),
+      .warranty-card:nth-child(5) {
+        grid-column: auto;
+        width: 100%;
+      }
+
       .plans-grid { grid-template-columns: 1fr; }
       
       .slider-track { height: 450px; }
@@ -619,6 +706,7 @@
         <a href="#overview">المواصفات العامة</a>
         <a href="#layout">مكونات الأدوار</a>
         <a href="#construction">صور البناء</a>
+        <a href="#warranties">الضمانات</a>
         <a href="#contact">تواصل معنا</a>
       </div>
       <button class="hamburger" id="hamburgerBtn" aria-label="قائمة التنقل">
@@ -639,6 +727,7 @@
       <a href="#overview" class="mobile-link">المواصفات العامة</a>
       <a href="#layout" class="mobile-link">مكونات الأدوار</a>
       <a href="#construction" class="mobile-link">صور البناء</a>
+      <a href="#warranties" class="mobile-link">الضمانات</a>
       <a href="#contact" class="mobile-link">تواصل معنا</a>
     </div>
   </div>
@@ -765,7 +854,65 @@
     </div>
   </section>
 
-  <!-- SECTION 4: CONTACT & CTA -->
+  <!-- SECTION 4: WARRANTIES & GUARANTEES CARDS -->
+  <section class="screen-section warranties-section" id="warranties">
+    <div class="container">
+      <div class="plan-title-block">
+        <span class="pill-badge">الضمانات المعتمدة</span>
+        <h2>ضمانات شاملة لراحة بالك</h2>
+        <p>نحرص على تقديم أعلى معايير الجودة والاعتماد الموثق لكافة الأعمال الإنشائية والتشطيبات:</p>
+      </div>
+
+      <div class="warranties-grid">
+        <!-- Card 1: Paints -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">format_paint</span>
+          </div>
+          <h3>الدهانات</h3>
+          <p>ضمان لمدة ٥ سنوات</p>
+        </div>
+
+        <!-- Card 2: Windows & Glass -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">grid_view</span>
+          </div>
+          <h3>النوافذ والألمنيوم والزجاج</h3>
+          <p>ألمنيوم وزجاج سكريت — ضمان لمدة ٥ سنوات</p>
+        </div>
+
+        <!-- Card 3: Electrical -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">bolt</span>
+          </div>
+          <h3>الأعمال الكهربائية</h3>
+          <p>ضمان لمدة ٢٥ سنة</p>
+        </div>
+
+        <!-- Card 4: Plumbing -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">plumbing</span>
+          </div>
+          <h3>أعمال السباكة</h3>
+          <p>شركة تحويل — ضمان لمدة ٢٥ سنة</p>
+        </div>
+
+        <!-- Card 5: Insulation -->
+        <div class="warranty-card">
+          <div class="warranty-icon-box">
+            <span class="material-icons-round">shield</span>
+          </div>
+          <h3>العوازل المائية</h3>
+          <p>ضمان لمدة ١٠ سنوات مصدق من الغرفة التجارية للأَسح ودورات المياه</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: CONTACT & CTA -->
   <section class="screen-section cta-section" id="contact">
     <div class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
       <div class="cta-card">
