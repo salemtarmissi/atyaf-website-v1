@@ -706,7 +706,7 @@
         <a href="#overview">المواصفات العامة</a>
         <a href="#layout">مكونات الأدوار</a>
         <a href="#construction">صور البناء</a>
-        <a href="#warranties">الضمانات.</a>
+        <a href="#warranties">الضمانات</a>
         <a href="#contact">تواصل معنا</a>
       </div>
       <button class="hamburger" id="hamburgerBtn" aria-label="قائمة التنقل">
@@ -833,6 +833,9 @@
           <div class="slide">
             <img src="images/6.jpeg" alt="صورة البناء 6" loading="lazy">
           </div>
+          <div class="slide">
+            <img src="images/7.jpg" alt="صورة البناء 7" loading="lazy">
+          </div>
         </div>
 
         <button class="slider-btn prev" id="prevBtn" aria-label="السابق">
@@ -850,6 +853,7 @@
         <button class="dot" data-index="3" aria-label="الصورة 4"></button>
         <button class="dot" data-index="4" aria-label="الصورة 5"></button>
         <button class="dot" data-index="5" aria-label="الصورة 6"></button>
+        <button class="dot" data-index="6" aria-label="الصورة 7"></button>
       </div>
     </div>
   </section>
@@ -1010,9 +1014,11 @@
       startTimer();
     }
 
+    // Pause auto-scroll on hover
     sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
     sliderContainer.addEventListener('mouseleave', startTimer);
 
+    // Initial start
     startTimer();
   </script>
 
