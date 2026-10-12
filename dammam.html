@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>تفاصيل الفيلا السكنية الفاخرة | أطياف العقارية</title>
-  <meta name="description" content="استعرض تفاصيل الفيلا السكنية الفاخرة من أطياف العقارية، المخططات الهندسية، وضمانات البناء." />
+  <meta name="description" content="استعرض تفاصيل الفيلا السكنية الفاخرة من أطياف العقارية، المخططات الهندسية." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
@@ -356,79 +356,113 @@
       font-weight: 700;
     }
 
-    /* --- SECTION 4: BALANCED WARRANTIES GRID (Full Container Width) --- */
-    .warranties-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 25px;
+    /* --- SECTION 3: CONSTRUCTION SLIDER GALLERY --- */
+    .construction-gallery-section {
+      background-color: var(--white);
+    }
+
+    .slider-container {
+      position: relative;
       width: 100%;
-    }
-
-    .warranty-card {
-      grid-column: span 4;
-      background: var(--green);
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+      background: var(--sand-light);
       border: 1px solid rgba(179, 145, 89, 0.3);
-      border-radius: 20px;
-      padding: 40px 25px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
     }
 
-    .warranty-card:nth-child(4),
-    .warranty-card:nth-child(5) {
-      grid-column: span 6;
+    .slider-track {
+      position: relative;
+      width: 100%;
+      height: 650px;
     }
 
-    .warranty-card:hover {
-      transform: translateY(-6px);
-      background: var(--green-dark);
-      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.2);
-    }
-
-    .warranty-icon-box {
-      width: 75px;
-      height: 75px;
-      background: rgba(179, 145, 89, 0.15);
-      border: 1px solid rgba(179, 145, 89, 0.4);
-      border-radius: 50%;
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 22px;
-      color: var(--gold);
-      transition: all 0.3s ease;
     }
 
-    .warranty-card:hover .warranty-icon-box {
-      background: var(--gold);
+    .slide.active {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(27, 46, 24, 0.75);
       color: #fff;
-      border-color: var(--gold);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
     }
 
-    .warranty-icon-box .material-icons-round {
+    .slider-btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .slider-btn span {
       font-size: 36px;
     }
 
-    .warranty-card h3 {
-      color: var(--sand-accent);
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin-bottom: 12px;
+    .slider-btn.prev {
+      right: 25px;
     }
 
-    .warranty-card p {
-      color: var(--gold);
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin: 0;
-      line-height: 1.6;
+    .slider-btn.next {
+      left: 25px;
     }
 
-    /* --- SECTION 5: CALL TO ACTION & FOOTER --- */
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(179, 145, 89, 0.35);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--gold);
+      transform: scale(1.3);
+    }
+
+    /* --- SECTION 4: CALL TO ACTION & FOOTER --- */
     .cta-section {
       background: var(--green-dark);
       color: #fff;
@@ -554,18 +588,16 @@
 
       .hero-img-box { display: none; }
 
-      .warranties-grid {
-        display: flex;
-        flex-direction: column;
-      }
-      .warranty-card,
-      .warranty-card:nth-child(4),
-      .warranty-card:nth-child(5) {
-        grid-column: auto;
-        width: 100%;
-      }
-
       .plans-grid { grid-template-columns: 1fr; }
+      
+      .slider-track { height: 450px; }
+      .slider-btn {
+        width: 48px;
+        height: 48px;
+      }
+      .slider-btn.prev { right: 12px; }
+      .slider-btn.next { left: 12px; }
+
       .specs-header-grid { grid-template-columns: 1fr; gap: 30px; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .cta-card { flex-direction: column; text-align: center; }
@@ -586,8 +618,7 @@
         <a href="index.html">الرئيسية</a>
         <a href="#overview">المواصفات العامة</a>
         <a href="#layout">مكونات الأدوار</a>
-        <a href="#construction">مراحل البناء</a>
-        <a href="#warranties">الضمانات</a>
+        <a href="#construction">صور البناء</a>
         <a href="#contact">تواصل معنا</a>
       </div>
       <button class="hamburger" id="hamburgerBtn" aria-label="قائمة التنقل">
@@ -607,8 +638,7 @@
       <a href="index.html" class="mobile-link">الرئيسية</a>
       <a href="#overview" class="mobile-link">المواصفات العامة</a>
       <a href="#layout" class="mobile-link">مكونات الأدوار</a>
-      <a href="#construction" class="mobile-link">مراحل البناء</a>
-      <a href="#warranties" class="mobile-link">الضمانات</a>
+      <a href="#construction" class="mobile-link">صور البناء</a>
       <a href="#contact" class="mobile-link">تواصل معنا</a>
     </div>
   </div>
@@ -685,65 +715,57 @@
     </div>
   </section>
 
-  <!-- SECTION 4: WARRANTIES & GUARANTEES CARDS -->
-  <section class="screen-section construction-section" id="warranties" style="background-color: var(--sand-light);">
+  <!-- SECTION 3: CONSTRUCTION IMAGES SLIDER -->
+  <section class="screen-section construction-gallery-section" id="construction">
     <div class="container">
-      <div class="section-header">
-        <span class="pill-badge">الضمانات المعتمدة</span>
-        <h2>ضمانات شاملة لراحة بالك</h2>
-        <p>نحرص على تقديم أعلى معايير الجودة والاعتماد الموثق لكافة الأعمال الإنشائية والتشطيبات:</p>
+      <div class="plan-title-block">
+        <span class="pill-badge">معرض الصور</span>
+        <h2>لقطات من موقع المشروع</h2>
+        <p>نظرة أقرب على تفاصيل ومراحل بناء الفيلا بكل ركن من أركانها.</p>
       </div>
 
-      <div class="warranties-grid">
-        <!-- Card 1: Paints -->
-        <div class="warranty-card">
-          <div class="warranty-icon-box">
-            <span class="material-icons-round">format_paint</span>
+      <div class="slider-container" id="constructionSlider">
+        <div class="slider-track">
+          <div class="slide active">
+            <img src="images/1.jpeg" alt="صورة البناء 1" loading="lazy">
           </div>
-          <h3>الدهانات</h3>
-          <p>ضمان لمدة ٥ سنوات</p>
+          <div class="slide">
+            <img src="images/2.jpeg" alt="صورة البناء 2" loading="lazy">
+          </div>
+          <div class="slide">
+            <img src="images/3.jpeg" alt="صورة البناء 3" loading="lazy">
+          </div>
+          <div class="slide">
+            <img src="images/4.jpeg" alt="صورة البناء 4" loading="lazy">
+          </div>
+          <div class="slide">
+            <img src="images/5.jpg" alt="صورة البناء 5" loading="lazy">
+          </div>
+          <div class="slide">
+            <img src="images/6.jpeg" alt="صورة البناء 6" loading="lazy">
+          </div>
         </div>
 
-        <!-- Card 2: Windows & Glass -->
-        <div class="warranty-card">
-          <div class="warranty-icon-box">
-            <span class="material-icons-round">grid_view</span>
-          </div>
-          <h3>النوافذ والألمنيوم والزجاج</h3>
-          <p>ألمنيوم وزجاج سكريت — ضمان لمدة ٥ سنوات</p>
-        </div>
+        <button class="slider-btn prev" id="prevBtn" aria-label="السابق">
+          <span class="material-icons-round">chevron_right</span>
+        </button>
+        <button class="slider-btn next" id="nextBtn" aria-label="التالي">
+          <span class="material-icons-round">chevron_left</span>
+        </button>
+      </div>
 
-        <!-- Card 3: Electrical -->
-        <div class="warranty-card">
-          <div class="warranty-icon-box">
-            <span class="material-icons-round">bolt</span>
-          </div>
-          <h3>الأعمال الكهربائية</h3>
-          <p>ضمان لمدة ٢٥ سنة</p>
-        </div>
-
-        <!-- Card 4: Plumbing -->
-        <div class="warranty-card">
-          <div class="warranty-icon-box">
-            <span class="material-icons-round">plumbing</span>
-          </div>
-          <h3>أعمال السباكة</h3>
-          <p>شركة تحويل — ضمان لمدة ٢٥ سنة</p>
-        </div>
-
-        <!-- Card 5: Insulation -->
-        <div class="warranty-card">
-          <div class="warranty-icon-box">
-            <span class="material-icons-round">shield</span>
-          </div>
-          <h3>العوازل المائية</h3>
-          <p>ضمان لمدة ١٠ سنوات مصدق من الغرفة التجارية للأَسح ودورات المياه</p>
-        </div>
+      <div class="slider-dots" id="sliderDots">
+        <button class="dot active" data-index="0" aria-label="الصورة 1"></button>
+        <button class="dot" data-index="1" aria-label="الصورة 2"></button>
+        <button class="dot" data-index="2" aria-label="الصورة 3"></button>
+        <button class="dot" data-index="3" aria-label="الصورة 4"></button>
+        <button class="dot" data-index="4" aria-label="الصورة 5"></button>
+        <button class="dot" data-index="5" aria-label="الصورة 6"></button>
       </div>
     </div>
   </section>
 
-  <!-- SECTION 5: CONTACT & CTA -->
+  <!-- SECTION 4: CONTACT & CTA -->
   <section class="screen-section cta-section" id="contact">
     <div class="container" style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
       <div class="cta-card">
@@ -765,8 +787,9 @@
     </footer>
   </section>
 
-  <!-- Mobile Menu Script -->
+  <!-- Scripts -->
   <script>
+    // Mobile Menu Script
     const hamburgerBtn = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuOverlay = document.getElementById('menuOverlay');
@@ -785,6 +808,67 @@
     mobileLinks.forEach(link => {
       link.addEventListener('click', toggleMenu);
     });
+
+    // Construction Slider Script
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const sliderContainer = document.getElementById('constructionSlider');
+    
+    let currentIndex = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        dots[i].classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+    }
+
+    function nextSlide() {
+      let index = (currentIndex + 1) % slides.length;
+      showSlide(index);
+    }
+
+    function prevSlide() {
+      let index = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(index);
+    }
+
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      resetTimer();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      resetTimer();
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showSlide(i);
+        resetTimer();
+      });
+    });
+
+    function startTimer() {
+      slideInterval = setInterval(nextSlide, 4000);
+    }
+
+    function resetTimer() {
+      clearInterval(slideInterval);
+      startTimer();
+    }
+
+    // Pause auto-scroll on hover
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    sliderContainer.addEventListener('mouseleave', startTimer);
+
+    // Initial start
+    startTimer();
   </script>
 
 </body>
